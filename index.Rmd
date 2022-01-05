@@ -1,0 +1,32 @@
+--- 
+title: "Galaxy Workflow for RNAseq"
+author: "David Innes"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+#bibliography: 
+# url: your book url like https://bookdown.org/yihui/bookdown
+# cover-image: path to the social sharing image like images/cover.jpg
+description: |
+  This is an instruction manual for using galaxy workflows to analyse RNAseq
+  fastq files on usegalaxy.org.au (or other similar usegalaxy websites). The aim
+  of this workflow is to produce a gene x sample count table/matrix from fastq 
+  files.
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+---
+
+# About
+
+These instructions show how to use pre-made workflows on [usegalaxy.org.au](usegalaxy.org.au) 
+to analyse single stranded RNAseq files outputted from an Illumina system. 
+
+It is broken into 2 workflows. A workflow is a set of tools on galaxy organised together to do certain tasks. These workflows are shareable and are included here.
+
+## Workflow Step 1 {-}
+The first workflow is designed to rename files, run quality check for each file and join any files together that are from the same sample (see \@ref(multiple-lane-files)). It also calculates some other values required for Step 2, such as the length of bp of the transcripts. 
+
+Once the output is checked (FastQC via a MultiQC report), the concatenated files can be used as input to Step 2.
+
+## Workflow Step 2 {-}
+Step 2

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Upload and Prepare Data | Galaxy Workflow for RNAseq</title>
+  <meta name="description" content="<p>This is an instruction manual for using galaxy workflows to analyse RNAseq
+fastq files on usegalaxy.org.au (or other similar usegalaxy websites). The aim
+of this workflow is to produce a gene x sample count table/matrix from fastq
+files.</p>" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Upload and Prepare Data | Galaxy Workflow for RNAseq" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="<p>This is an instruction manual for using galaxy workflows to analyse RNAseq
+fastq files on usegalaxy.org.au (or other similar usegalaxy websites). The aim
+of this workflow is to produce a gene x sample count table/matrix from fastq
+files.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Upload and Prepare Data | Galaxy Workflow for RNAseq" />
+  
+  <meta name="twitter:description" content="<p>This is an instruction manual for using galaxy workflows to analyse RNAseq
+fastq files on usegalaxy.org.au (or other similar usegalaxy websites). The aim
+of this workflow is to produce a gene x sample count table/matrix from fastq
+files.</p>" />
+  
+
+<meta name="author" content="David Innes" />
+
+
+<meta name="date" content="2022-01-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="multiple-lane-files.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Galaxy workflow for RNAseq</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#workflow-step-1"><i class="fa fa-check"></i>Workflow Step 1</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#workflow-step-2"><i class="fa fa-check"></i>Workflow Step 2</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="upload-and-prepare-data.html"><a href="upload-and-prepare-data.html"><i class="fa fa-check"></i><b>2</b> Upload and Prepare Data</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="upload-and-prepare-data.html"><a href="upload-and-prepare-data.html#import-fastq-files"><i class="fa fa-check"></i><b>2.1</b> Import fastq files</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="upload-and-prepare-data.html"><a href="upload-and-prepare-data.html#upload"><i class="fa fa-check"></i><b>2.1.1</b> Upload</a></li>
+<li class="chapter" data-level="2.1.2" data-path="upload-and-prepare-data.html"><a href="upload-and-prepare-data.html#add-files-to-a-collection"><i class="fa fa-check"></i><b>2.1.2</b> Add files to a ‘collection’</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="upload-and-prepare-data.html"><a href="upload-and-prepare-data.html#rename-files"><i class="fa fa-check"></i><b>2.2</b> Rename Files</a>
+<ul>
+<li class="chapter" data-level="" data-path="upload-and-prepare-data.html"><a href="upload-and-prepare-data.html#a-note-on-multiple-lanes"><i class="fa fa-check"></i>A note on multiple lanes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="upload-and-prepare-data.html"><a href="upload-and-prepare-data.html#import-ensembl-files"><i class="fa fa-check"></i><b>2.3</b> Import ENSEMBL files</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="upload-and-prepare-data.html"><a href="upload-and-prepare-data.html#uncompress-.gtf-file"><i class="fa fa-check"></i><b>2.3.1</b> Uncompress .gtf file</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="multiple-lane-files.html"><a href="multiple-lane-files.html"><i class="fa fa-check"></i><b>3</b> Mutliple Lane files</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Galaxy Workflow for RNAseq</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="upload-and-prepare-data" class="section level1" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Upload and Prepare Data</h1>
+<div id="import-fastq-files" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Import fastq files</h2>
+<div id="upload" class="section level3" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Upload</h3>
+<p>Firstly we upload the files to the Galaxy History. Follow figures below.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:chunk1"></span>
+<img src="images/image001.png" alt="Click Upload Data button" width="100%" />
+<p class="caption">
+Figure 2.1: Click Upload Data button
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:chunk2"></span>
+<img src="images/image002.png" alt="Select ‘Collection’ from the top ribbon and click ‘Choose local files’ button" width="100%" />
+<p class="caption">
+Figure 2.2: Select ‘Collection’ from the top ribbon and click ‘Choose local files’ button
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:chunk3"></span>
+<img src="images/image003.png" alt="Navigate to the files to upload and highlight them all using Shift or Ctrl keys to help, then click ‘Open’" width="100%" />
+<p class="caption">
+Figure 2.3: Navigate to the files to upload and highlight them all using Shift or Ctrl keys to help, then click ‘Open’
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:chunk4"></span>
+<img src="images/image004.png" alt="Click ‘Start’ button to begin uploading files. Keep this website open until it is finished." width="100%" />
+<p class="caption">
+Figure 2.4: Click ‘Start’ button to begin uploading files. Keep this website open until it is finished.
+</p>
+</div>
+</div>
+<div id="add-files-to-a-collection" class="section level3" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Add files to a ‘collection’</h3>
+<p>Once the files have uploaded they will appear in the History pane. Next, we add them to a ‘collection’, which is basically just a list of files. It allows all files to be parsed through a workflow one by one. For example, if a tool was used on a collection, then each item in the list/collection would invoke its own job while all output is kept within a collection in the history.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:chunk5"></span>
+<img src="images/image005.png" alt="Select ‘Operations on multiple datasets’ then select all items to add to collection" width="214" />
+<p class="caption">
+Figure 2.5: Select ‘Operations on multiple datasets’ then select all items to add to collection
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:chunk6"></span>
+<img src="images/image006.png" alt="Click ‘For all selected’ then 'Build dataset list'" width="217" />
+<p class="caption">
+Figure 2.6: Click ‘For all selected’ then ‘Build dataset list’
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:chunk7"></span>
+<img src="images/image007.png" alt="Type a name for the list and click ‘Create collection’ button" width="100%" />
+<p class="caption">
+Figure 2.7: Type a name for the list and click ‘Create collection’ button
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:chunk8"></span>
+<img src="images/image008.png" alt="All files should now be in a collection in the History pane." width="216" />
+<p class="caption">
+Figure 2.8: All files should now be in a collection in the History pane.
+</p>
+</div>
+</div>
+</div>
+<div id="rename-files" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Rename Files</h2>
+<p>This step renames the files to more meaningful and user friendly names.</p>
+<p>To do this, a new file is imported with the old names and the new names. This should be a tab delimited .txt file with 2 columns of data.</p>
+<p>The 1st column has original name (which is likely to be filename) and the 2nd column has new names. E.g. original filename might be <code>SQ_049_HMJ7NDRXY_TATGATGGCC-TATGACAATC_L001_R1.fastq.gz</code> whereas new name could be changed to include treatment information such as <code>ST_811_P5_L001</code>.
+It is important that the "_L" number is included at the end, even if there is not multiple lanes per sample. This will be dealt with by the “Step 1” workflow. See section <a href="upload-and-prepare-data.html#a-note-on-multiple-lanes"><strong>??</strong></a>.</p>
+<p>Use the ‘upload data’ feature of galaxy to import the .txt file to to the History. It should look something like <a href="upload-and-prepare-data.html#fig:example-rename">2.9</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:example-rename"></span>
+<img src="images/image009.png" alt="Example of text file imported to History with original and new filenames" width="100%" />
+<p class="caption">
+Figure 2.9: Example of text file imported to History with original and new filenames
+</p>
+</div>
+<p>This .txt file can be made in Excel, or it can be done much quicker using a simple R script. The following is an example script:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="upload-and-prepare-data.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># list file names and create table with new file names for use in galaxy&#39;s &quot;Relabel list identifiers&quot; tool</span></span>
+<span id="cb1-2"><a href="upload-and-prepare-data.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="upload-and-prepare-data.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb1-4"><a href="upload-and-prepare-data.html#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="upload-and-prepare-data.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#list the names of the fastq files in the working directory</span></span>
+<span id="cb1-6"><a href="upload-and-prepare-data.html#cb1-6" aria-hidden="true" tabindex="-1"></a>file_list <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">path =</span> <span class="st">&quot;E:/RNAseq - P steers ST 20211212/&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;.fastq&quot;</span>)</span>
+<span id="cb1-7"><a href="upload-and-prepare-data.html#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="upload-and-prepare-data.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#list .csv files to select the .csv file that contains sample information</span></span>
+<span id="cb1-9"><a href="upload-and-prepare-data.html#cb1-9" aria-hidden="true" tabindex="-1"></a>files_csv <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">path =</span> <span class="st">&quot;E:/RNAseq - P steers ST 20211212/&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;.csv&quot;</span>)</span>
+<span id="cb1-10"><a href="upload-and-prepare-data.html#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="upload-and-prepare-data.html#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#selects the correct .csv file, in this case there is only 1 file anyway, but the correct file can be selected by entering it&#39;s number in the list in the []</span></span>
+<span id="cb1-12"><a href="upload-and-prepare-data.html#cb1-12" aria-hidden="true" tabindex="-1"></a>selected_file <span class="ot">&lt;-</span> files_csv[<span class="dv">1</span>]</span>
+<span id="cb1-13"><a href="upload-and-prepare-data.html#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="fu">paste</span>(<span class="st">&quot;Selected file -&quot;</span>, selected_file))</span>
+<span id="cb1-14"><a href="upload-and-prepare-data.html#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="upload-and-prepare-data.html#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">#import the selected file, making sure no columns have the same name</span></span>
+<span id="cb1-16"><a href="upload-and-prepare-data.html#cb1-16" aria-hidden="true" tabindex="-1"></a>sample_IDs <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="at">file =</span> <span class="fu">paste0</span>(<span class="st">&quot;E:/RNAseq - P steers ST 20211212/&quot;</span>,selected_file)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-17"><a href="upload-and-prepare-data.html#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>(<span class="at">.name_repair =</span> <span class="st">&quot;unique&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-18"><a href="upload-and-prepare-data.html#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Steer ID</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">as.character</span>(<span class="st">`</span><span class="at">Steer ID</span><span class="st">`</span>)) </span>
+<span id="cb1-19"><a href="upload-and-prepare-data.html#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="upload-and-prepare-data.html#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="upload-and-prepare-data.html#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co">#As the file names have a set structure, it can be split by the _ character</span></span>
+<span id="cb1-22"><a href="upload-and-prepare-data.html#cb1-22" aria-hidden="true" tabindex="-1"></a>df_file_names_split <span class="ot">&lt;-</span> <span class="fu">str_split</span>(file_list, <span class="at">pattern =</span> <span class="st">&quot;_&quot;</span>, <span class="at">simplify =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>()</span>
+<span id="cb1-23"><a href="upload-and-prepare-data.html#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="upload-and-prepare-data.html#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co">#In this example, the &#39;key&#39; column is the RNAseq_ID column. So this will be modified to remove the &#39;SQ_&#39; from the ID so that it can match.</span></span>
+<span id="cb1-25"><a href="upload-and-prepare-data.html#cb1-25" aria-hidden="true" tabindex="-1"></a>sample_IDs <span class="ot">&lt;-</span> </span>
+<span id="cb1-26"><a href="upload-and-prepare-data.html#cb1-26" aria-hidden="true" tabindex="-1"></a>  sample_IDs <span class="sc">%&gt;%</span> </span>
+<span id="cb1-27"><a href="upload-and-prepare-data.html#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">RNAseq_ID_2 =</span> <span class="fu">str_remove</span>(RNAseq_ID, <span class="st">&quot;SQ_&quot;</span>),</span>
+<span id="cb1-28"><a href="upload-and-prepare-data.html#cb1-28" aria-hidden="true" tabindex="-1"></a>         <span class="at">Treatment2 =</span> <span class="fu">str_remove</span>(Treatment, <span class="st">&#39;-&#39;</span>))</span>
+<span id="cb1-29"><a href="upload-and-prepare-data.html#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="upload-and-prepare-data.html#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co">#join the sampleID annotations to this dataframe, concat required columns for new name</span></span>
+<span id="cb1-31"><a href="upload-and-prepare-data.html#cb1-31" aria-hidden="true" tabindex="-1"></a>new_names <span class="ot">&lt;-</span> df_file_names_split <span class="sc">%&gt;%</span> </span>
+<span id="cb1-32"><a href="upload-and-prepare-data.html#cb1-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(sample_IDs, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;V2&quot;</span> <span class="ot">=</span> <span class="st">&quot;RNAseq_ID_2&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-33"><a href="upload-and-prepare-data.html#cb1-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">new_sample_names =</span> <span class="fu">str_c</span>(<span class="st">`</span><span class="at">Tissue type</span><span class="st">`</span>,<span class="st">`</span><span class="at">Steer ID</span><span class="st">`</span>, Treatment2, V5, <span class="at">sep =</span> <span class="st">&quot;_&quot;</span>)) <span class="sc">%&gt;%</span> <span class="co">#make new names with ID_Treatmentinfo_Lane</span></span>
+<span id="cb1-34"><a href="upload-and-prepare-data.html#cb1-34" aria-hidden="true" tabindex="-1"></a>  magrittr<span class="sc">::</span><span class="fu">use_series</span>(new_sample_names) <span class="co">#select only the required column as a list (not a table)</span></span>
+<span id="cb1-35"><a href="upload-and-prepare-data.html#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="upload-and-prepare-data.html#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="co">#create new table with only old file names and new names</span></span>
+<span id="cb1-37"><a href="upload-and-prepare-data.html#cb1-37" aria-hidden="true" tabindex="-1"></a>new_name_table <span class="ot">&lt;-</span></span>
+<span id="cb1-38"><a href="upload-and-prepare-data.html#cb1-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="st">&quot;File_name&quot;</span> <span class="ot">=</span> file_list, <span class="st">&quot;New_sample_names&quot;</span> <span class="ot">=</span> new_names)</span>
+<span id="cb1-39"><a href="upload-and-prepare-data.html#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="upload-and-prepare-data.html#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="co">#export to working directory, as tab delim </span></span>
+<span id="cb1-41"><a href="upload-and-prepare-data.html#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="fu">fwrite</span>(new_name_table, <span class="at">file =</span> <span class="st">&quot;E:/RNAseq - P steers ST 20211212/new_sample_names_for_galaxy.txt&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>)</span></code></pre></div>
+<div id="a-note-on-multiple-lanes" class="section level3 unnumbered">
+<h3>A note on multiple lanes</h3>
+<p>The output from Illumina sequencing is sometimes provided in multiple files, each corresponding to a ‘Lane’ on the sequencer. It would be easier to ask the lab to provide the output as a single file, which can be computed using the <code>--no-lane-splitting</code> option from Illumina’s <code>bcl2fastq</code> program. However, it can also be handled in Galaxy. If there are multiple files, it is best practice to run FastQC on each individual file, as there is a chance that one file could be corrupt or you may identify a bias for one particular ‘Lane’. If they are ok, then these files can be concatenated together before proceeding with all further steps.</p>
+<p>This is described further in ______. Make sure the new names generated in <a href="upload-and-prepare-data.html#rename-files">2.2</a> have a format that includes "_L". The protocol relies on there being a ‘_L’ in the name for it to find the lane number. The rest of the name before the ‘_L’ should be the same.</p>
+<p>E.g. the following three files would be concatenated together by the “Step 1” workflow:</p>
+<ul>
+<li>2139_Stage 2_Fast_L008</li>
+<li>2139_Stage 2_Fast_L007</li>
+<li>2139_Stage 2_Fast_L006</li>
+</ul>
+</div>
+</div>
+<div id="import-ensembl-files" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Import ENSEMBL files</h2>
+<p>In this step we need to import the required fastq file for sequence alignment and a gtf file for gene annotation.
+These can be uploaded directly to Galaxy via a URL. To find the required files, navigate to <a href="http://ftp.ensembl.org">http://ftp.ensembl.org</a> in a browser.</p>
+<p>For sheep (ovis_aries) these might be:</p>
+<ul>
+<li><a href="http://ftp.ensembl.org/pub/release-100/fasta/ovis_aries/dna/Ovis_aries.Oar_v3.1.dna.toplevel.fa.gz" class="uri">http://ftp.ensembl.org/pub/release-100/fasta/ovis_aries/dna/Ovis_aries.Oar_v3.1.dna.toplevel.fa.gz</a></li>
+<li><a href="http://ftp.ensembl.org/pub/release-100/gtf/ovis_aries/Ovis_aries.Oar_v3.1.100.gtf.gz" class="uri">http://ftp.ensembl.org/pub/release-100/gtf/ovis_aries/Ovis_aries.Oar_v3.1.100.gtf.gz</a></li>
+</ul>
+<p>For cattle (bos_taurus) these might be:</p>
+<ul>
+<li><a href="http://ftp.ensembl.org/pub/release-100/fasta/bos_taurus/dna/Bos_taurus.ARS-UCD1.2.dna.toplevel.fa.gz" class="uri">http://ftp.ensembl.org/pub/release-100/fasta/bos_taurus/dna/Bos_taurus.ARS-UCD1.2.dna.toplevel.fa.gz</a></li>
+<li><a href="http://ftp.ensembl.org/pub/release-100/gtf/bos_taurus/Bos_taurus.ARS-UCD1.2.100.gtf.gz" class="uri">http://ftp.ensembl.org/pub/release-100/gtf/bos_taurus/Bos_taurus.ARS-UCD1.2.100.gtf.gz</a></li>
+</ul>
+<p>Note that unmasked files are used here (i.e. use files without <code>_rm</code> or <code>_sm</code>).</p>
+To upload these to Galaxy, use the ‘Paste/Fetch data’ button in the ‘Upload data’ dialogue box on Galaxy.
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:paste-url"></span>
+<img src="images/image_upload_url.png" alt="Paste each URL on a new line to upload directly from ENSEMBL to Galaxy." width="100%" />
+<p class="caption">
+Figure 2.10: Paste each URL on a new line to upload directly from ENSEMBL to Galaxy.
+</p>
+</div>
+<p>Once executed, 2 new files will appear in the History, each named as the URL entered. This can take some time to finish as they are large files.</p>
+<div id="uncompress-.gtf-file" class="section level3" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Uncompress .gtf file</h3>
+<p>These files are actually .gz files, which means they are compressed. Normally, this is automatically handled by Galaxy but does not currently work for the .gtf file when using it with the <code>STAR Aligner</code> in this workflow. Therefore, use the tool <a href="https://usegalaxy.org.au/root?tool_id=CONVERTER_gz_to_uncompressed">https://usegalaxy.org.au/root?tool_id=CONVERTER_gz_to_uncompressed</a> to uncompress the .gtf file before proceeding.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="multiple-lane-files.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/2_upload_data.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
