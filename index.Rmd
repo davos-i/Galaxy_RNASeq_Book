@@ -30,3 +30,6 @@ Once the output is checked (FastQC via a MultiQC report), the concatenated files
 
 ## Workflow Step 2 {-}
 Step 2
+
+## User profile {-}
+You will need to be signed in to complete this analysis. Make sure you use university email address when setting up profile. Registered users with an Australian research institute are allocated 600GB, otherwise only 100GB is allocated.

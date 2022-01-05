@@ -41,7 +41,7 @@ files.</p>" />
   
   
 <link rel="prev" href="index.html"/>
-<link rel="next" href="multiple-lane-files.html"/>
+<link rel="next" href="step1.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -150,6 +150,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#workflow-step-1"><i class="fa fa-check"></i>Workflow Step 1</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#workflow-step-2"><i class="fa fa-check"></i>Workflow Step 2</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#user-profile"><i class="fa fa-check"></i>User profile</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="upload-and-prepare-data.html"><a href="upload-and-prepare-data.html"><i class="fa fa-check"></i><b>2</b> Upload and Prepare Data</a>
 <ul>
@@ -160,14 +161,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="upload-and-prepare-data.html"><a href="upload-and-prepare-data.html#rename-files"><i class="fa fa-check"></i><b>2.2</b> Rename Files</a>
 <ul>
-<li class="chapter" data-level="" data-path="upload-and-prepare-data.html"><a href="upload-and-prepare-data.html#a-note-on-multiple-lanes"><i class="fa fa-check"></i>A note on multiple lanes</a></li>
+<li class="chapter" data-level="2.2.1" data-path="upload-and-prepare-data.html"><a href="upload-and-prepare-data.html#rename-note"><i class="fa fa-check"></i><b>2.2.1</b> A note on multiple lanes</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="upload-and-prepare-data.html"><a href="upload-and-prepare-data.html#import-ensembl-files"><i class="fa fa-check"></i><b>2.3</b> Import ENSEMBL files</a>
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="upload-and-prepare-data.html"><a href="upload-and-prepare-data.html#uncompress-.gtf-file"><i class="fa fa-check"></i><b>2.3.1</b> Uncompress .gtf file</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="multiple-lane-files.html"><a href="multiple-lane-files.html"><i class="fa fa-check"></i><b>3</b> Mutliple Lane files</a></li>
+<li class="chapter" data-level="3" data-path="step1.html"><a href="step1.html"><i class="fa fa-check"></i><b>3</b> Workflow - Step 1</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="step1.html"><a href="step1.html#find-workflow"><i class="fa fa-check"></i><b>3.1</b> Find workflow</a></li>
+<li class="chapter" data-level="3.2" data-path="step1.html"><a href="step1.html#run-workflow"><i class="fa fa-check"></i><b>3.2</b> Run workflow</a></li>
+<li class="chapter" data-level="3.3" data-path="step1.html"><a href="step1.html#view-results"><i class="fa fa-check"></i><b>3.3</b> View results</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="step-2.html"><a href="step-2.html"><i class="fa fa-check"></i><b>4</b> Step 2</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="step-2.html"><a href="step-2.html#import-workflow"><i class="fa fa-check"></i><b>4.1</b> Import workflow</a></li>
+<li class="chapter" data-level="4.2" data-path="step-2.html"><a href="step-2.html#run-workflow-1"><i class="fa fa-check"></i><b>4.2</b> Run Workflow</a></li>
+<li class="chapter" data-level="4.3" data-path="step-2.html"><a href="step-2.html#inspect-report"><i class="fa fa-check"></i><b>4.3</b> Inspect Report</a></li>
+<li class="chapter" data-level="4.4" data-path="step-2.html"><a href="step-2.html#save-data"><i class="fa fa-check"></i><b>4.4</b> Save data</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="multiple-lane-files.html"><a href="multiple-lane-files.html"><i class="fa fa-check"></i><b>5</b> Mutliple Lane files</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -254,7 +268,7 @@ Figure 2.8: All files should now be in a collection in the History pane.
 <p>This step renames the files to more meaningful and user friendly names.</p>
 <p>To do this, a new file is imported with the old names and the new names. This should be a tab delimited .txt file with 2 columns of data.</p>
 <p>The 1st column has original name (which is likely to be filename) and the 2nd column has new names. E.g. original filename might be <code>SQ_049_HMJ7NDRXY_TATGATGGCC-TATGACAATC_L001_R1.fastq.gz</code> whereas new name could be changed to include treatment information such as <code>ST_811_P5_L001</code>.
-It is important that the "_L" number is included at the end, even if there is not multiple lanes per sample. This will be dealt with by the “Step 1” workflow. See section <a href="upload-and-prepare-data.html#a-note-on-multiple-lanes"><strong>??</strong></a>.</p>
+It is important that the "_L" number is included at the end, even if there is not multiple lanes per sample. This will be dealt with by the “Step 1” workflow. See section <a href="upload-and-prepare-data.html#rename-note">2.2.1</a>.</p>
 <p>Use the ‘upload data’ feature of galaxy to import the .txt file to to the History. It should look something like <a href="upload-and-prepare-data.html#fig:example-rename">2.9</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:example-rename"></span>
 <img src="images/image009.png" alt="Example of text file imported to History with original and new filenames" width="100%" />
@@ -304,10 +318,10 @@ Figure 2.9: Example of text file imported to History with original and new filen
 <span id="cb1-39"><a href="upload-and-prepare-data.html#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-40"><a href="upload-and-prepare-data.html#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="co">#export to working directory, as tab delim </span></span>
 <span id="cb1-41"><a href="upload-and-prepare-data.html#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="fu">fwrite</span>(new_name_table, <span class="at">file =</span> <span class="st">&quot;E:/RNAseq - P steers ST 20211212/new_sample_names_for_galaxy.txt&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>)</span></code></pre></div>
-<div id="a-note-on-multiple-lanes" class="section level3 unnumbered">
-<h3>A note on multiple lanes</h3>
+<div id="rename-note" class="section level3" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> A note on multiple lanes</h3>
 <p>The output from Illumina sequencing is sometimes provided in multiple files, each corresponding to a ‘Lane’ on the sequencer. It would be easier to ask the lab to provide the output as a single file, which can be computed using the <code>--no-lane-splitting</code> option from Illumina’s <code>bcl2fastq</code> program. However, it can also be handled in Galaxy. If there are multiple files, it is best practice to run FastQC on each individual file, as there is a chance that one file could be corrupt or you may identify a bias for one particular ‘Lane’. If they are ok, then these files can be concatenated together before proceeding with all further steps.</p>
-<p>This is described further in ______. Make sure the new names generated in <a href="upload-and-prepare-data.html#rename-files">2.2</a> have a format that includes "_L". The protocol relies on there being a ‘_L’ in the name for it to find the lane number. The rest of the name before the ‘_L’ should be the same.</p>
+<p>This is described further in <a href="multiple-lane-files.html#multiple-lane-files">5</a>. Make sure the new names generated in <a href="upload-and-prepare-data.html#rename-files">2.2</a> have a format that includes "_L". The protocol relies on there being a ‘_L’ in the name for it to find the lane number. The rest of the name before the ‘_L’ should be the same.</p>
 <p>E.g. the following three files would be concatenated together by the “Step 1” workflow:</p>
 <ul>
 <li>2139_Stage 2_Fast_L008</li>
@@ -342,6 +356,13 @@ Figure 2.10: Paste each URL on a new line to upload directly from ENSEMBL to Gal
 <div id="uncompress-.gtf-file" class="section level3" number="2.3.1">
 <h3><span class="header-section-number">2.3.1</span> Uncompress .gtf file</h3>
 <p>These files are actually .gz files, which means they are compressed. Normally, this is automatically handled by Galaxy but does not currently work for the .gtf file when using it with the <code>STAR Aligner</code> in this workflow. Therefore, use the tool <a href="https://usegalaxy.org.au/root?tool_id=CONVERTER_gz_to_uncompressed">https://usegalaxy.org.au/root?tool_id=CONVERTER_gz_to_uncompressed</a> to uncompress the .gtf file before proceeding.</p>
+<p>Once it is uncompressed it may not have the correct file format attributed to it in Galaxy. Fix this by using the auto-detect feature within the Datatypes ribbon of the Edit Attributes section.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:edit-attributes"></span>
+<img src="images/image_edit_attributes.png" alt="Click 'edit attributes' then navigate to 'Datatypes' to use the Auto-Detect. Otherwise manually set it to .gtf" width="100%" />
+<p class="caption">
+Figure 2.11: Click ‘edit attributes’ then navigate to ‘Datatypes’ to use the Auto-Detect. Otherwise manually set it to .gtf
+</p>
+</div>
 
 </div>
 </div>
@@ -352,7 +373,7 @@ Figure 2.10: Paste each URL on a new line to upload directly from ENSEMBL to Gal
         </div>
       </div>
 <a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="multiple-lane-files.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="step1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -383,7 +404,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/2_upload_data.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02_upload_data.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -1,0 +1,25 @@
+# Step 2
+Step 2 completes multiple steps and reports output to one MultiQC report at the end, with various important outputs to the History.
+The most useful output from this workflow for DE analysis is the table of counts with rows as gene names and columns as sample names.
+
+The details of the pipeline are visible by following the workflow URL. In short, it uses trimmo
+
+## Import workflow 
+https://usegalaxy.org.au/u/dave-innes/w/rna-seq-step-2
+
+
+## Run Workflow
+There are 4 required inputs to this workflow. Set it up as follows:
+
+```{r run-workflow-step2, echo = FALSE, out.width='100%', fig.align='center', fig.cap="Setup Step 2 then press Run Workflow"}
+knitr::include_graphics("images/image_step2.png")
+```
+
+
+__This workflow will take a very long time to run. It runs on the Galaxy server and you can log in from any computer to see it's status. You're computer does not need to stay on.__
+
+
+## Inspect Report
+
+
+## Save data

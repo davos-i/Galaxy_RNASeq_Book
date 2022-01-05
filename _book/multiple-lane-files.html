@@ -4,14 +4,14 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Mutliple Lane files | Galaxy Workflow for RNAseq</title>
+  <title>Chapter 5 Mutliple Lane files | Galaxy Workflow for RNAseq</title>
   <meta name="description" content="<p>This is an instruction manual for using galaxy workflows to analyse RNAseq
 fastq files on usegalaxy.org.au (or other similar usegalaxy websites). The aim
 of this workflow is to produce a gene x sample count table/matrix from fastq
 files.</p>" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 Mutliple Lane files | Galaxy Workflow for RNAseq" />
+  <meta property="og:title" content="Chapter 5 Mutliple Lane files | Galaxy Workflow for RNAseq" />
   <meta property="og:type" content="book" />
   
   
@@ -22,7 +22,7 @@ files.</p>" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Mutliple Lane files | Galaxy Workflow for RNAseq" />
+  <meta name="twitter:title" content="Chapter 5 Mutliple Lane files | Galaxy Workflow for RNAseq" />
   
   <meta name="twitter:description" content="<p>This is an instruction manual for using galaxy workflows to analyse RNAseq
 fastq files on usegalaxy.org.au (or other similar usegalaxy websites). The aim
@@ -40,7 +40,7 @@ files.</p>" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="upload-and-prepare-data.html"/>
+<link rel="prev" href="step-2.html"/>
 
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -150,6 +150,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#workflow-step-1"><i class="fa fa-check"></i>Workflow Step 1</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#workflow-step-2"><i class="fa fa-check"></i>Workflow Step 2</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#user-profile"><i class="fa fa-check"></i>User profile</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="upload-and-prepare-data.html"><a href="upload-and-prepare-data.html"><i class="fa fa-check"></i><b>2</b> Upload and Prepare Data</a>
 <ul>
@@ -160,14 +161,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="upload-and-prepare-data.html"><a href="upload-and-prepare-data.html#rename-files"><i class="fa fa-check"></i><b>2.2</b> Rename Files</a>
 <ul>
-<li class="chapter" data-level="" data-path="upload-and-prepare-data.html"><a href="upload-and-prepare-data.html#a-note-on-multiple-lanes"><i class="fa fa-check"></i>A note on multiple lanes</a></li>
+<li class="chapter" data-level="2.2.1" data-path="upload-and-prepare-data.html"><a href="upload-and-prepare-data.html#rename-note"><i class="fa fa-check"></i><b>2.2.1</b> A note on multiple lanes</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="upload-and-prepare-data.html"><a href="upload-and-prepare-data.html#import-ensembl-files"><i class="fa fa-check"></i><b>2.3</b> Import ENSEMBL files</a>
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="upload-and-prepare-data.html"><a href="upload-and-prepare-data.html#uncompress-.gtf-file"><i class="fa fa-check"></i><b>2.3.1</b> Uncompress .gtf file</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="multiple-lane-files.html"><a href="multiple-lane-files.html"><i class="fa fa-check"></i><b>3</b> Mutliple Lane files</a></li>
+<li class="chapter" data-level="3" data-path="step1.html"><a href="step1.html"><i class="fa fa-check"></i><b>3</b> Workflow - Step 1</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="step1.html"><a href="step1.html#find-workflow"><i class="fa fa-check"></i><b>3.1</b> Find workflow</a></li>
+<li class="chapter" data-level="3.2" data-path="step1.html"><a href="step1.html#run-workflow"><i class="fa fa-check"></i><b>3.2</b> Run workflow</a></li>
+<li class="chapter" data-level="3.3" data-path="step1.html"><a href="step1.html#view-results"><i class="fa fa-check"></i><b>3.3</b> View results</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="step-2.html"><a href="step-2.html"><i class="fa fa-check"></i><b>4</b> Step 2</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="step-2.html"><a href="step-2.html#import-workflow"><i class="fa fa-check"></i><b>4.1</b> Import workflow</a></li>
+<li class="chapter" data-level="4.2" data-path="step-2.html"><a href="step-2.html#run-workflow-1"><i class="fa fa-check"></i><b>4.2</b> Run Workflow</a></li>
+<li class="chapter" data-level="4.3" data-path="step-2.html"><a href="step-2.html#inspect-report"><i class="fa fa-check"></i><b>4.3</b> Inspect Report</a></li>
+<li class="chapter" data-level="4.4" data-path="step-2.html"><a href="step-2.html#save-data"><i class="fa fa-check"></i><b>4.4</b> Save data</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="multiple-lane-files.html"><a href="multiple-lane-files.html"><i class="fa fa-check"></i><b>5</b> Mutliple Lane files</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -188,8 +202,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="multiple-lane-files" class="section level1" number="3">
-<h1><span class="header-section-number">Chapter 3</span> Mutliple Lane files</h1>
+<div id="multiple-lane-files" class="section level1" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Mutliple Lane files</h1>
 <p>The output from Illumina sequencing is sometimes provided in multiple files, each corresponding to a ‘Lane’ on the sequencer. It would be easier to ask the lab to provide the output as a single file, which can be computed using the <code>--no-lane-splitting</code> option from Illumina’s <code>bcl2fastq</code> program. However, it can also be handled in Galaxy.</p>
 <p>If there are multiple files, it is best practice to run FastQC on each individual file, as there is a chance that one file could be corrupt or you may identify a bias for one particular ‘Lane’. If they are ok, then these files can be concatenated together before proceeding with all further steps. There are 2 workflows that will be used in Galaxy, with the first designed to work with each individual lane file and the second requiring 1 file per sample. This can be done by following these steps:</p>
 <ol style="list-style-type: decimal">
@@ -229,7 +243,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="upload-and-prepare-data.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="step-2.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>
@@ -261,7 +275,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/3_multiple_lanes.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/10_multiple_lanes.Rmd",
 "text": "Edit"
 },
 "history": {

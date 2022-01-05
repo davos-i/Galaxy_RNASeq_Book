@@ -148,6 +148,12 @@ Once the output is checked (FastQC via a MultiQC report), the concatenated files
 
 Step 2
 
+\hypertarget{user-profile}{%
+\section*{User profile}\label{user-profile}}
+\addcontentsline{toc}{section}{User profile}
+
+You will need to be signed in to complete this analysis. Make sure you use university email address when setting up profile. Registered users with an Australian research institute are allocated 600GB, otherwise only 100GB is allocated.
+
 \hypertarget{upload-and-prepare-data}{%
 \chapter{Upload and Prepare Data}\label{upload-and-prepare-data}}
 
@@ -244,7 +250,7 @@ This step renames the files to more meaningful and user friendly names.
 To do this, a new file is imported with the old names and the new names. This should be a tab delimited .txt file with 2 columns of data.
 
 The 1st column has original name (which is likely to be filename) and the 2nd column has new names. E.g. original filename might be \texttt{SQ\_049\_HMJ7NDRXY\_TATGATGGCC-TATGACAATC\_L001\_R1.fastq.gz} whereas new name could be changed to include treatment information such as \texttt{ST\_811\_P5\_L001}.
-It is important that the "\_L" number is included at the end, even if there is not multiple lanes per sample. This will be dealt with by the ``Step 1'' workflow. See section \ref{a-note-on-multiple-lanes}.
+It is important that the "\_L" number is included at the end, even if there is not multiple lanes per sample. This will be dealt with by the ``Step 1'' workflow. See section \ref{rename-note}.
 
 Use the `upload data' feature of galaxy to import the .txt file to to the History. It should look something like \ref{fig:example-rename}.
 
@@ -305,13 +311,12 @@ This .txt file can be made in Excel, or it can be done much quicker using a simp
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{a-note-on-multiple-lanes}{%
-\subsection*{A note on multiple lanes}\label{a-note-on-multiple-lanes}}
-\addcontentsline{toc}{subsection}{A note on multiple lanes}
+\hypertarget{rename-note}{%
+\subsection{A note on multiple lanes}\label{rename-note}}
 
 The output from Illumina sequencing is sometimes provided in multiple files, each corresponding to a `Lane' on the sequencer. It would be easier to ask the lab to provide the output as a single file, which can be computed using the \texttt{-\/-no-lane-splitting} option from Illumina's \texttt{bcl2fastq} program. However, it can also be handled in Galaxy. If there are multiple files, it is best practice to run FastQC on each individual file, as there is a chance that one file could be corrupt or you may identify a bias for one particular `Lane'. If they are ok, then these files can be concatenated together before proceeding with all further steps.
 
-This is described further in \_\_\_\_\_\_. Make sure the new names generated in \ref{rename-files} have a format that includes "\_L". The protocol relies on there being a `\_L' in the name for it to find the lane number. The rest of the name before the `\_L' should be the same.
+This is described further in \ref{multiple-lane-files}. Make sure the new names generated in \ref{rename-files} have a format that includes "\_L". The protocol relies on there being a `\_L' in the name for it to find the lane number. The rest of the name before the `\_L' should be the same.
 
 E.g. the following three files would be concatenated together by the ``Step 1'' workflow:
 
@@ -370,6 +375,123 @@ Once executed, 2 new files will appear in the History, each named as the URL ent
 \subsection{Uncompress .gtf file}\label{uncompress-.gtf-file}}
 
 These files are actually .gz files, which means they are compressed. Normally, this is automatically handled by Galaxy but does not currently work for the .gtf file when using it with the \texttt{STAR\ Aligner} in this workflow. Therefore, use the tool \url{https://usegalaxy.org.au/root?tool_id=CONVERTER_gz_to_uncompressed} to uncompress the .gtf file before proceeding.
+
+Once it is uncompressed it may not have the correct file format attributed to it in Galaxy. Fix this by using the auto-detect feature within the Datatypes ribbon of the Edit Attributes section.
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{images/image_edit_attributes} 
+
+}
+
+\caption{Click 'edit attributes' then navigate to 'Datatypes' to use the Auto-Detect. Otherwise manually set it to .gtf}\label{fig:edit-attributes}
+\end{figure}
+
+\hypertarget{step1}{%
+\chapter{Workflow - Step 1}\label{step1}}
+
+Once all of the data is uploaded to Galaxy it is time to run/invoke the workflows.
+The first workflow is relatively fast compared to Step 2, but is important for QC and to prepare data.
+
+\hypertarget{find-workflow}{%
+\section{Find workflow}\label{find-workflow}}
+
+The workflow used here is published at: \url{https://usegalaxy.org.au/u/dave-innes/w/rna-seq-step-1}
+
+This workflow will need to be imported into your personal galaxy profile. Navigate to: \url{https://usegalaxy.org.au/workflows/import}
+On this page you will be able to enter the workflow URL above. This will also be required for Step 2.
+
+You can also navigate directly the workflow's URL and import it from there.
+
+\hypertarget{run-workflow}{%
+\section{Run workflow}\label{run-workflow}}
+
+To view your workflows, click on the `Workflow' link at the top of the page.
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{images/image_run_workflow} 
+
+}
+
+\caption{Click the Run Workflow button}\label{fig:view-workflow}
+\end{figure}
+
+Once you've clicked `Run Workflow' it will let you select the files it should use and show all of the steps it will complete.
+Select the appropriate files for 1 and 2. All other steps will not require user input.
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{images/image_run_workflow2} 
+
+}
+
+\caption{Select list of fastq files for number 1 and select the table of new names for number 2, then click 'Run Workflow'}\label{fig:run-workflow}
+\end{figure}
+
+This will invoke all steps and you will see them in the History.
+
+\hypertarget{view-results}{%
+\section{View results}\label{view-results}}
+
+Once all steps are completed you will see the each part of the History has turned green.
+
+\begin{figure}
+
+{\centering \includegraphics[width=6.18in]{images/image_history_after_step1} 
+
+}
+
+\caption{Example output in history after running first workflow}\label{fig:history-post-step1}
+\end{figure}
+
+The most interesting data will be found in the MultiQC webpage. It can be Viewed within galaxy but it may view better if downloaded and opened up in web browser.
+
+\begin{figure}
+
+{\centering \includegraphics[width=3.67in]{images/image_view_multiQC} 
+
+}
+
+\caption{View the MultiQC webpage report}\label{fig:view-multiQC}
+\end{figure}
+
+There is plenty of help included in the report and it is worth noting that some sections will normally fail for RNAseq data. Although unlikely, it is also important to check if there are any major quality differences between lanes before proceeding (if multiple lanes exist).
+
+\hypertarget{step-2}{%
+\chapter{Step 2}\label{step-2}}
+
+Step 2 completes multiple steps and reports output to one MultiQC report at the end, with various important outputs to the History.
+The most useful output from this workflow for DE analysis is the table of counts with rows as gene names and columns as sample names.
+
+The details of the pipeline are visible by following the workflow URL. In short, it uses trimmo
+
+\hypertarget{import-workflow}{%
+\section{Import workflow}\label{import-workflow}}
+
+\url{https://usegalaxy.org.au/u/dave-innes/w/rna-seq-step-2}
+
+\hypertarget{run-workflow-1}{%
+\section{Run Workflow}\label{run-workflow-1}}
+
+There are 4 required inputs to this workflow. Set it up as follows:
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{images/image_step2} 
+
+}
+
+\caption{Setup Step 2 then press Run Workflow}\label{fig:run-workflow-step2}
+\end{figure}
+
+\textbf{This workflow will take a very long time to run. It runs on the Galaxy server and you can log in from any computer to see it's status. You're computer does not need to stay on.}
+
+\hypertarget{inspect-report}{%
+\section{Inspect Report}\label{inspect-report}}
+
+\hypertarget{save-data}{%
+\section{Save data}\label{save-data}}
 
 \hypertarget{multiple-lane-files}{%
 \chapter{Mutliple Lane files}\label{multiple-lane-files}}

@@ -150,6 +150,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#workflow-step-1"><i class="fa fa-check"></i>Workflow Step 1</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#workflow-step-2"><i class="fa fa-check"></i>Workflow Step 2</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#user-profile"><i class="fa fa-check"></i>User profile</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="upload-and-prepare-data.html"><a href="upload-and-prepare-data.html"><i class="fa fa-check"></i><b>2</b> Upload and Prepare Data</a>
 <ul>
@@ -160,14 +161,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="upload-and-prepare-data.html"><a href="upload-and-prepare-data.html#rename-files"><i class="fa fa-check"></i><b>2.2</b> Rename Files</a>
 <ul>
-<li class="chapter" data-level="" data-path="upload-and-prepare-data.html"><a href="upload-and-prepare-data.html#a-note-on-multiple-lanes"><i class="fa fa-check"></i>A note on multiple lanes</a></li>
+<li class="chapter" data-level="2.2.1" data-path="upload-and-prepare-data.html"><a href="upload-and-prepare-data.html#rename-note"><i class="fa fa-check"></i><b>2.2.1</b> A note on multiple lanes</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="upload-and-prepare-data.html"><a href="upload-and-prepare-data.html#import-ensembl-files"><i class="fa fa-check"></i><b>2.3</b> Import ENSEMBL files</a>
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="upload-and-prepare-data.html"><a href="upload-and-prepare-data.html#uncompress-.gtf-file"><i class="fa fa-check"></i><b>2.3.1</b> Uncompress .gtf file</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="multiple-lane-files.html"><a href="multiple-lane-files.html"><i class="fa fa-check"></i><b>3</b> Mutliple Lane files</a></li>
+<li class="chapter" data-level="3" data-path="step1.html"><a href="step1.html"><i class="fa fa-check"></i><b>3</b> Workflow - Step 1</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="step1.html"><a href="step1.html#find-workflow"><i class="fa fa-check"></i><b>3.1</b> Find workflow</a></li>
+<li class="chapter" data-level="3.2" data-path="step1.html"><a href="step1.html#run-workflow"><i class="fa fa-check"></i><b>3.2</b> Run workflow</a></li>
+<li class="chapter" data-level="3.3" data-path="step1.html"><a href="step1.html#view-results"><i class="fa fa-check"></i><b>3.3</b> View results</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="step-2.html"><a href="step-2.html"><i class="fa fa-check"></i><b>4</b> Step 2</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="step-2.html"><a href="step-2.html#import-workflow"><i class="fa fa-check"></i><b>4.1</b> Import workflow</a></li>
+<li class="chapter" data-level="4.2" data-path="step-2.html"><a href="step-2.html#run-workflow-1"><i class="fa fa-check"></i><b>4.2</b> Run Workflow</a></li>
+<li class="chapter" data-level="4.3" data-path="step-2.html"><a href="step-2.html#inspect-report"><i class="fa fa-check"></i><b>4.3</b> Inspect Report</a></li>
+<li class="chapter" data-level="4.4" data-path="step-2.html"><a href="step-2.html#save-data"><i class="fa fa-check"></i><b>4.4</b> Save data</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="multiple-lane-files.html"><a href="multiple-lane-files.html"><i class="fa fa-check"></i><b>5</b> Mutliple Lane files</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -200,12 +214,16 @@ to analyse single stranded RNAseq files outputted from an Illumina system.</p>
 <p>It is broken into 2 workflows. A workflow is a set of tools on galaxy organised together to do certain tasks. These workflows are shareable and are included here.</p>
 <div id="workflow-step-1" class="section level2 unnumbered">
 <h2>Workflow Step 1</h2>
-<p>The first workflow is designed to rename files, run quality check for each file and join any files together that are from the same sample (see <a href="multiple-lane-files.html#multiple-lane-files">3</a>). It also calculates some other values required for Step 2, such as the length of bp of the transcripts.</p>
+<p>The first workflow is designed to rename files, run quality check for each file and join any files together that are from the same sample (see <a href="multiple-lane-files.html#multiple-lane-files">5</a>). It also calculates some other values required for Step 2, such as the length of bp of the transcripts.</p>
 <p>Once the output is checked (FastQC via a MultiQC report), the concatenated files can be used as input to Step 2.</p>
 </div>
 <div id="workflow-step-2" class="section level2 unnumbered">
 <h2>Workflow Step 2</h2>
 <p>Step 2</p>
+</div>
+<div id="user-profile" class="section level2 unnumbered">
+<h2>User profile</h2>
+<p>You will need to be signed in to complete this analysis. Make sure you use university email address when setting up profile. Registered users with an Australian research institute are allocated 600GB, otherwise only 100GB is allocated.</p>
 
 </div>
 </div>
