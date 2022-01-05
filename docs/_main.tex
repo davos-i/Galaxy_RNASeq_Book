@@ -132,7 +132,9 @@
 These instructions show how to use pre-made workflows on \url{usegalaxy.org.au}
 to analyse single stranded RNAseq files outputted from an Illumina system.
 
-It is broken into 2 workflows. A workflow is a set of tools on galaxy organised together to do certain tasks. These workflows are shareable and are included here.
+This assumes some familularity with Galaxy, but also aims to help beginners complete this specific use-case. Other tutorials are more generalised and are better equipped to help users learn each stop of RNAseq pipelines.
+
+It is broken into 2 workflows. A workflow is a set of tools on galaxy organised together to do certain tasks. These workflows are shareable and are included here. Therefore many steps are automated and not discussed, but the details can be viewed when exploring these workflows within Galaxy.
 
 \hypertarget{workflow-step-1}{%
 \section*{Workflow Step 1}\label{workflow-step-1}}
@@ -146,7 +148,7 @@ Once the output is checked (FastQC via a MultiQC report), the concatenated files
 \section*{Workflow Step 2}\label{workflow-step-2}}
 \addcontentsline{toc}{section}{Workflow Step 2}
 
-Step 2
+This workflow re-runs fastQC with the input files, and uses trimmomatic, RNA STAR Aligner and featureCounts to produce the required outputs for downstream analysis. It also reports each step to MultiQC webpage.
 
 \hypertarget{user-profile}{%
 \section*{User profile}\label{user-profile}}
@@ -462,7 +464,7 @@ There is plenty of help included in the report and it is worth noting that some 
 \chapter{Step 2}\label{step-2}}
 
 Step 2 completes multiple steps and reports output to one MultiQC report at the end, with various important outputs to the History.
-The most useful output from this workflow for DE analysis is the table of counts with rows as gene names and columns as sample names.
+The most useful output from this workflow for Differential Expression (DE) analysis is the table of counts with rows as gene names and columns as sample names.
 
 The details of the pipeline are visible by following the workflow URL. In short, it uses trimmo
 
@@ -485,18 +487,28 @@ There are 4 required inputs to this workflow. Set it up as follows:
 \caption{Setup Step 2 then press Run Workflow}\label{fig:run-workflow-step2}
 \end{figure}
 
-\textbf{This workflow will take a very long time to run. It runs on the Galaxy server and you can log in from any computer to see it's status. You're computer does not need to stay on.}
-
-\hypertarget{inspect-report}{%
-\section{Inspect Report}\label{inspect-report}}
+\textbf{This workflow will take a very long time to run. It runs on the Galaxy server and you can log in from any computer to see it's status. You're computer does not need to stay on. An email will also be sent to you once the last step is completed.}
 
 \hypertarget{save-data}{%
 \section{Save data}\label{save-data}}
 
+Each analysis will require different outputs, but a simple DE analysis will normally only require the featureCounts output that is normally labelled as \texttt{featureCounts\_matrix.tabular}. Download this file. It can be previewed in Microsoft Excel by dragging and dropping into an active Excel window, however it is sometimes a large file and best handled in R or other similar software. Also be careful not to save changes if viewing in Excel as some gene names will be converted to date formats in excel and may introduce errors e.g.~\texttt{MARCH1} gene.
+
+It is also recommended to save the MultiQC webpage and stats output. This is particularly useful for describing methods when writing up.
+
+You may also want to view the specific alignments and therefore you will need the .bam files. See \url{https://software.broadinstitute.org/software/igv/BAM} for more information.
+
+\hypertarget{inspect-report}{%
+\section{Inspect Report}\label{inspect-report}}
+
+It is important to view the MultiQC webpage and check that all output meets your quality requirements.
+
 \hypertarget{multiple-lane-files}{%
-\chapter{Mutliple Lane files}\label{multiple-lane-files}}
+\chapter{More notes on mutliple lane files}\label{multiple-lane-files}}
 
 The output from Illumina sequencing is sometimes provided in multiple files, each corresponding to a `Lane' on the sequencer. It would be easier to ask the lab to provide the output as a single file, which can be computed using the \texttt{-\/-no-lane-splitting} option from Illumina's \texttt{bcl2fastq} program. However, it can also be handled in Galaxy.
+
+\textbf{The following is a description of how to handle this manually. Please note that this is automated within Step 1 Workflow.}
 
 If there are multiple files, it is best practice to run FastQC on each individual file, as there is a chance that one file could be corrupt or you may identify a bias for one particular `Lane'. If they are ok, then these files can be concatenated together before proceeding with all further steps. There are 2 workflows that will be used in Galaxy, with the first designed to work with each individual lane file and the second requiring 1 file per sample. This can be done by following these steps:
 

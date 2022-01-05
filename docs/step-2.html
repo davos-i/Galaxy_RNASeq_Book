@@ -178,10 +178,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.1" data-path="step-2.html"><a href="step-2.html#import-workflow"><i class="fa fa-check"></i><b>4.1</b> Import workflow</a></li>
 <li class="chapter" data-level="4.2" data-path="step-2.html"><a href="step-2.html#run-workflow-1"><i class="fa fa-check"></i><b>4.2</b> Run Workflow</a></li>
-<li class="chapter" data-level="4.3" data-path="step-2.html"><a href="step-2.html#inspect-report"><i class="fa fa-check"></i><b>4.3</b> Inspect Report</a></li>
-<li class="chapter" data-level="4.4" data-path="step-2.html"><a href="step-2.html#save-data"><i class="fa fa-check"></i><b>4.4</b> Save data</a></li>
+<li class="chapter" data-level="4.3" data-path="step-2.html"><a href="step-2.html#save-data"><i class="fa fa-check"></i><b>4.3</b> Save data</a></li>
+<li class="chapter" data-level="4.4" data-path="step-2.html"><a href="step-2.html#inspect-report"><i class="fa fa-check"></i><b>4.4</b> Inspect Report</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="multiple-lane-files.html"><a href="multiple-lane-files.html"><i class="fa fa-check"></i><b>5</b> Mutliple Lane files</a></li>
+<li class="chapter" data-level="5" data-path="multiple-lane-files.html"><a href="multiple-lane-files.html"><i class="fa fa-check"></i><b>5</b> More notes on mutliple lane files</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -205,7 +205,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="step-2" class="section level1" number="4">
 <h1><span class="header-section-number">Chapter 4</span> Step 2</h1>
 <p>Step 2 completes multiple steps and reports output to one MultiQC report at the end, with various important outputs to the History.
-The most useful output from this workflow for DE analysis is the table of counts with rows as gene names and columns as sample names.</p>
+The most useful output from this workflow for Differential Expression (DE) analysis is the table of counts with rows as gene names and columns as sample names.</p>
 <p>The details of the pipeline are visible by following the workflow URL. In short, it uses trimmo</p>
 <div id="import-workflow" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> Import workflow</h2>
@@ -220,13 +220,17 @@ The most useful output from this workflow for DE analysis is the table of counts
 Figure 4.1: Setup Step 2 then press Run Workflow
 </p>
 </div>
-<p><strong>This workflow will take a very long time to run. It runs on the Galaxy server and you can log in from any computer to see it’s status. You’re computer does not need to stay on.</strong></p>
+<p><strong>This workflow will take a very long time to run. It runs on the Galaxy server and you can log in from any computer to see it’s status. You’re computer does not need to stay on. An email will also be sent to you once the last step is completed.</strong></p>
 </div>
-<div id="inspect-report" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> Inspect Report</h2>
+<div id="save-data" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Save data</h2>
+<p>Each analysis will require different outputs, but a simple DE analysis will normally only require the featureCounts output that is normally labelled as <code>featureCounts_matrix.tabular</code>. Download this file. It can be previewed in Microsoft Excel by dragging and dropping into an active Excel window, however it is sometimes a large file and best handled in R or other similar software. Also be careful not to save changes if viewing in Excel as some gene names will be converted to date formats in excel and may introduce errors e.g. <code>MARCH1</code> gene.</p>
+<p>It is also recommended to save the MultiQC webpage and stats output. This is particularly useful for describing methods when writing up.</p>
+<p>You may also want to view the specific alignments and therefore you will need the .bam files. See <a href="https://software.broadinstitute.org/software/igv/BAM" class="uri">https://software.broadinstitute.org/software/igv/BAM</a> for more information.</p>
 </div>
-<div id="save-data" class="section level2" number="4.4">
-<h2><span class="header-section-number">4.4</span> Save data</h2>
+<div id="inspect-report" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Inspect Report</h2>
+<p>It is important to view the MultiQC webpage and check that all output meets your quality requirements.</p>
 
 </div>
 </div>

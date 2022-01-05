@@ -21,7 +21,9 @@ github-repo: rstudio/bookdown-demo
 These instructions show how to use pre-made workflows on [usegalaxy.org.au](usegalaxy.org.au) 
 to analyse single stranded RNAseq files outputted from an Illumina system. 
 
-It is broken into 2 workflows. A workflow is a set of tools on galaxy organised together to do certain tasks. These workflows are shareable and are included here.
+This assumes some familularity with Galaxy, but also aims to help beginners complete this specific use-case. Other tutorials are more generalised and are better equipped to help users learn each stop of RNAseq pipelines.
+
+It is broken into 2 workflows. A workflow is a set of tools on galaxy organised together to do certain tasks. These workflows are shareable and are included here. Therefore many steps are automated and not discussed, but the details can be viewed when exploring these workflows within Galaxy.
 
 ## Workflow Step 1 {-}
 The first workflow is designed to rename files, run quality check for each file and join any files together that are from the same sample (see \@ref(multiple-lane-files)). It also calculates some other values required for Step 2, such as the length of bp of the transcripts. 
@@ -29,7 +31,7 @@ The first workflow is designed to rename files, run quality check for each file 
 Once the output is checked (FastQC via a MultiQC report), the concatenated files can be used as input to Step 2.
 
 ## Workflow Step 2 {-}
-Step 2
+This workflow re-runs fastQC with the input files, and uses trimmomatic, RNA STAR Aligner and featureCounts to produce the required outputs for downstream analysis. It also reports each step to MultiQC webpage.
 
 ## User profile {-}
 You will need to be signed in to complete this analysis. Make sure you use university email address when setting up profile. Registered users with an Australian research institute are allocated 600GB, otherwise only 100GB is allocated.

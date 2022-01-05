@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2022.1.5)  5 JAN 2022 22:20
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2022.1.5)  5 JAN 2022 22:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -730,9 +730,7 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 
 ]
 Chapter 1.
-[5] [6
-
-]
+[5] [6]
 Chapter 2.
 File: images/image001.png Graphic file (type bmp)
 <images/image001.png>
@@ -745,11 +743,13 @@ File: images/image004.png Graphic file (type bmp)
 
 Underfull \vbox (badness 3460) has occurred while \output is active []
 
-[7] [8]
+[7
+
+] [8]
 File: images/image005.png Graphic file (type bmp)
 <images/image005.png>
 
-LaTeX Warning: Float too large for page by 34.11652pt on input line 216.
+LaTeX Warning: Float too large for page by 34.11652pt on input line 218.
 
 File: images/image006.png Graphic file (type bmp)
 <images/image006.png>
@@ -758,46 +758,46 @@ File: images/image007.png Graphic file (type bmp)
 File: images/image008.png Graphic file (type bmp)
 <images/image008.png>
 
-Underfull \hbox (badness 2080) in paragraph at lines 252--254
+Underfull \hbox (badness 2080) in paragraph at lines 254--256
 \TU/lmr/m/n/10 the 2nd column has new names. E.g. original filename might be
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 252--254
+Underfull \hbox (badness 10000) in paragraph at lines 254--256
 \TU/lmtt/m/n/10 SQ_049_HMJ7NDRXY_TATGATGGCC-TATGACAATC_L001_R1.fastq.gz \TU/lmr/m/n/10 whereas
  []
 
 
-Underfull \hbox (badness 1394) in paragraph at lines 252--254
+Underfull \hbox (badness 1394) in paragraph at lines 254--256
 \TU/lmr/m/n/10 new name could be changed to include treatment information such as
  []
 
 File: images/image009.png Graphic file (type bmp)
 <images/image009.png>
 [9] [10] [11]
-Overfull \vbox (0.58844pt too high) detected at line 312
+Overfull \vbox (0.58844pt too high) detected at line 314
  []
 
 [12] [13]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [14]
-Underfull \hbox (badness 10000) in paragraph at lines 344--346
+Underfull \hbox (badness 10000) in paragraph at lines 346--348
 [][]$[][][][] [] [] [] [][][] [] [][][][][][][] [] [][][] [] [][][] [] [][][][][][][] [][] [][][] [] [][][][][] [] [][][][] [] [][][][][] [] [][][] [] [][][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 346--347
+Underfull \hbox (badness 10000) in paragraph at lines 348--349
 [][]$[][][][] [] [] [] [][][] [] [][][][][][][] [] [][][] [] [][][] [] [][][][][][][] [][] [][][] [] [][][] [] [][][][] [] [][][][][] [] [][][][] [] [][][][][] [] [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 354--356
+Underfull \hbox (badness 10000) in paragraph at lines 356--358
 [][]$[][][][] [] [] [] [][][] [] [][][][][][][] [] [][][] [] [][][] [] [][][][][][][] [][] [][][] [] [][][][][] [] [][][] [] [][][][][][] [] [][][] [] [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 356--357
+Underfull \hbox (badness 10000) in paragraph at lines 358--359
 [][]$[][][][] [] [] [] [][][] [] [][][][][][][] [] [][][] [] [][][] [] [][][][][][][] [][] [][][] [] [][][] [] [][][] [] [][][][][][] [] [][][] [] [][][][][][] []
  []
 
@@ -825,21 +825,21 @@ File: images/image_step2.png Graphic file (type bmp)
 <images/image_step2.png>
 [25
 
-] [26]
-Chapter 5.
-[27
+] [26] [27] [28
 
-] [28] (./_main.aux)
+]
+Chapter 5.
+[29] [30] (./_main.aux)
 Package rerunfilecheck Info: File `_main.out' has not changed.
-(rerunfilecheck)             Checksum: 5889B263DB8DE99844FC9D580D4C2B11;2246.
+(rerunfilecheck)             Checksum: CD133225CF8D44EAD34F6978983887C3;2325.
  ) 
 Here is how much of TeX's memory you used:
  17738 strings out of 478256
  328483 string characters out of 5854461
- 774381 words of memory out of 5000000
+ 774395 words of memory out of 5000000
  38015 multiletter control sequences out of 15000+600000
  409897 words of font info for 82 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  86i,6n,121p,694b,424s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on _main.pdf (28 pages).
+Output written on _main.pdf (30 pages).

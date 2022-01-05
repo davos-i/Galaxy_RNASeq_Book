@@ -178,10 +178,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.1" data-path="step-2.html"><a href="step-2.html#import-workflow"><i class="fa fa-check"></i><b>4.1</b> Import workflow</a></li>
 <li class="chapter" data-level="4.2" data-path="step-2.html"><a href="step-2.html#run-workflow-1"><i class="fa fa-check"></i><b>4.2</b> Run Workflow</a></li>
-<li class="chapter" data-level="4.3" data-path="step-2.html"><a href="step-2.html#inspect-report"><i class="fa fa-check"></i><b>4.3</b> Inspect Report</a></li>
-<li class="chapter" data-level="4.4" data-path="step-2.html"><a href="step-2.html#save-data"><i class="fa fa-check"></i><b>4.4</b> Save data</a></li>
+<li class="chapter" data-level="4.3" data-path="step-2.html"><a href="step-2.html#save-data"><i class="fa fa-check"></i><b>4.3</b> Save data</a></li>
+<li class="chapter" data-level="4.4" data-path="step-2.html"><a href="step-2.html#inspect-report"><i class="fa fa-check"></i><b>4.4</b> Inspect Report</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="multiple-lane-files.html"><a href="multiple-lane-files.html"><i class="fa fa-check"></i><b>5</b> Mutliple Lane files</a></li>
+<li class="chapter" data-level="5" data-path="multiple-lane-files.html"><a href="multiple-lane-files.html"><i class="fa fa-check"></i><b>5</b> More notes on mutliple lane files</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -211,7 +211,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 1</span> About</h1>
 <p>These instructions show how to use pre-made workflows on <a href="usegalaxy.org.au">usegalaxy.org.au</a>
 to analyse single stranded RNAseq files outputted from an Illumina system.</p>
-<p>It is broken into 2 workflows. A workflow is a set of tools on galaxy organised together to do certain tasks. These workflows are shareable and are included here.</p>
+<p>This assumes some familularity with Galaxy, but also aims to help beginners complete this specific use-case. Other tutorials are more generalised and are better equipped to help users learn each stop of RNAseq pipelines.</p>
+<p>It is broken into 2 workflows. A workflow is a set of tools on galaxy organised together to do certain tasks. These workflows are shareable and are included here. Therefore many steps are automated and not discussed, but the details can be viewed when exploring these workflows within Galaxy.</p>
 <div id="workflow-step-1" class="section level2 unnumbered">
 <h2>Workflow Step 1</h2>
 <p>The first workflow is designed to rename files, run quality check for each file and join any files together that are from the same sample (see <a href="multiple-lane-files.html#multiple-lane-files">5</a>). It also calculates some other values required for Step 2, such as the length of bp of the transcripts.</p>
@@ -219,7 +220,7 @@ to analyse single stranded RNAseq files outputted from an Illumina system.</p>
 </div>
 <div id="workflow-step-2" class="section level2 unnumbered">
 <h2>Workflow Step 2</h2>
-<p>Step 2</p>
+<p>This workflow re-runs fastQC with the input files, and uses trimmomatic, RNA STAR Aligner and featureCounts to produce the required outputs for downstream analysis. It also reports each step to MultiQC webpage.</p>
 </div>
 <div id="user-profile" class="section level2 unnumbered">
 <h2>User profile</h2>

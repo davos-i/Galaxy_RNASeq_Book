@@ -30,6 +30,6 @@ view-results
 step-2
 import-workflow
 run-workflow-1
-inspect-report
 save-data
+inspect-report
 multiple-lane-files
