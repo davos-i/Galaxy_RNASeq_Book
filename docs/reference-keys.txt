@@ -24,10 +24,10 @@ rename-note
 import-ensembl-files
 uncompress-.gtf-file
 step1
-find-workflow
+workflow-instructions
 run-workflow
 view-results
-step-2
+workflow---step-2
 import-workflow
 run-workflow-1
 save-data

@@ -1,10 +1,13 @@
-# Step 2
+# Workflow - Step 2
 Step 2 completes multiple steps and reports output to one MultiQC report at the end, with various important outputs to the History.
 The most useful output from this workflow for Differential Expression (DE) analysis is the table of counts with rows as gene names and columns as sample names.
 
-The details of the pipeline are visible by following the workflow URL. In short, it uses trimmo
+The details of the pipeline are visible by following the workflow URL. In short, it uses trimmomatic, RNA STAR Aligner and featureCounts.
 
 ## Import workflow 
+Follow instructions in Section \@ref(workflow-instructions) to add the following workflow:
+
+
 https://usegalaxy.org.au/u/dave-innes/w/rna-seq-step-2
 
 

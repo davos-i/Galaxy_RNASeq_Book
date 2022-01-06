@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2022.1.5)  5 JAN 2022 22:40
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2022.1.5)  6 JAN 2022 12:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -831,12 +831,12 @@ File: images/image_step2.png Graphic file (type bmp)
 Chapter 5.
 [29] [30] (./_main.aux)
 Package rerunfilecheck Info: File `_main.out' has not changed.
-(rerunfilecheck)             Checksum: CD133225CF8D44EAD34F6978983887C3;2325.
+(rerunfilecheck)             Checksum: AD972360A7950FB533619A3A110ABB37;2386.
  ) 
 Here is how much of TeX's memory you used:
  17738 strings out of 478256
- 328483 string characters out of 5854461
- 774395 words of memory out of 5000000
+ 328502 string characters out of 5854461
+ 774406 words of memory out of 5000000
  38015 multiletter control sequences out of 15000+600000
  409897 words of font info for 82 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191

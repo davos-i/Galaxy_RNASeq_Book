@@ -2,7 +2,7 @@
 Once all of the data is uploaded to Galaxy it is time to run/invoke the workflows.
 The first workflow is relatively fast compared to Step 2, but is important for QC and to prepare data.
 
-## Find workflow
+## Find workflow {#workflow-instructions}
 The workflow used here is published at: https://usegalaxy.org.au/u/dave-innes/w/rna-seq-step-1
 
 This workflow will need to be imported into your personal galaxy profile. Navigate to: https://usegalaxy.org.au/workflows/import
